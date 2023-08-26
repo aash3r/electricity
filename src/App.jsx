@@ -1,9 +1,9 @@
 
 import  Container  from 'react-bootstrap/Container';
 import Navigation from './Navigation/Navigation';
-import Body from './Body/Body';
-import './App.scss';
-import Periods from './Footer/Periods';
+import Body from './Body';
+import './app.scss';
+import Footer from './Footer';
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <Container>
       <Navigation />
       <Body />
-      <Periods />
+      <Footer />
     </Container>
   );
 }

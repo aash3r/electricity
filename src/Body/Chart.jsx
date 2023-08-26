@@ -55,6 +55,7 @@ const data = [
 ];
 
 function Chart() {
+  return (
   <div className="chartContainer">
     <ResponsiveContainer height="100%" width="100%">
     <LineChart
@@ -80,7 +81,8 @@ function Chart() {
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
     </ResponsiveContainer>
-  </div>;
+  </div>
+  )
 }
 
 export default Chart;

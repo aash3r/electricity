@@ -23,7 +23,7 @@ const periods = [
     }
 ];
 
-function Periods () {
+function Periods({setShowSideBar}) {
     
     const [selected, setSelected] = useState(periods[0].label);
     
@@ -40,6 +40,11 @@ function Periods () {
             {label}
             </Button>
             )}
+            <Button
+                className="mx-2"
+                variant="primary"
+                onClick={() => setShowSideBar(true)}
+                >Custom</Button>
         </Container>
     )
 }

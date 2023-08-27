@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./Header";
 import Chart from "./Chart";
 import {ELE} from './constants';
-import "./body.scss";
+import "./Body.scss";
 
 function Body() {
 

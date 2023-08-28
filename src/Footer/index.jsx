@@ -8,7 +8,7 @@ function Footer(props) {
   return (
     <>
       <DataSwithcer {...props}/>
-      <Periods setShowSideBar={setShowSideBar} />
+      <Periods setShowSideBar={setShowSideBar} {...props}/>
       <Sidebar show={showSideBar} handleClose={() => setShowSideBar(false)}/>
     </>
   );

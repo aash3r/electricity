@@ -12,8 +12,8 @@ function DataSwithcer({ dataType , setDataType}) {
         name="group1"
         type="radio"
         id={`inline-1`}
-        onClick={() => setDataType('CHART')}
-        defaultChecked={dataType === 'CHART'}
+        onClick={() => setDataType(CHART)}
+        defaultChecked={dataType === CHART}
       />
       <Form.Check
         inline
@@ -21,7 +21,7 @@ function DataSwithcer({ dataType , setDataType}) {
         name="group1"
         type="radio"
         id={`inline-2`}
-        onClick={() => setDataType('TABLE')}
+        onClick={() => setDataType(TABLE)}
       />
     </Container>
   );

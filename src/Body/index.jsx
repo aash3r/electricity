@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Header from "./Header";
 import Chart from "./Chart";
-import {ELE} from './constants';
+import DataTable from "./DataTable";
+import {ELE , CHART} from '../constants';
 import "./Body.scss";
 
-function Body() {
+function Body({dataType}) {
 
   const [activeEnergy, setActiveEnergy] = useState(ELE);
   
@@ -13,8 +14,9 @@ function Body() {
       <Header 
        activeEnergy={activeEnergy}
        setActiveEnergy={setActiveEnergy} />
-
-      <Chart activeEnergy={activeEnergy}/>
+      
+      {dataType === 'CHART' ? <Chart activeEnergy={activeEnergy}/> : <DataTable/> }
+       
     </>
   );
 }

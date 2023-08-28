@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import {ELE , GAS} from './constants'
+import {ELE , GAS} from '../constants'
 
 function Switcher({activeEnergy, setActiveEnergy}) {
   

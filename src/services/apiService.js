@@ -6,7 +6,7 @@ const apiUrl = 'https://dashboard.elering.ee/api';
 
 export async function getElectricityPrice(selectedPeriod) {
     const start = moment().subtract('10' , 'hours').toISOString();
-    const end = moment().add('2', 'days').toISOString();
+    const end = moment().add(selectedPeriod, 'days').toISOString();
 
     const params = new URLSearchParams({
         start,

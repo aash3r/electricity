@@ -10,16 +10,22 @@ import {
   ReferenceLine
 } from "recharts";
 import moment from 'moment';
+import {useEffect} from 'react'
 
 
 
-function Chart({electricityPrice }) {
+function Chart({electricityPrice, setCurrentElectricityPrice }) {
 
   const data = electricityPrice?.ee.map(
     price => ({...price, hour:  moment.unix(price.timestamp).format('HH') })
   );
 
   const now = moment().format('HH');
+
+  useEffect(() => {
+    const currentIndex = data?.findIndex(({hour}) => hour === now);
+    setCurrentElectricityPrice(data?.[currentIndex].price)
+  }, [data])
 
   return (
   <div className="chartContainer">

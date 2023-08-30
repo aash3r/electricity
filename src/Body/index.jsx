@@ -15,6 +15,7 @@ function Body({dataType, selectedPeriod}) {
   const [electricityPrice, setElectricityPrice] = useState(null);
   const [gasPrice , setGasPrice] = useState(null);
   const [errorMessage , setErrorMessage] = useState(null);
+  const [currentElectricityPrice, setCurrentElectricityPrice] = useState(0);
 
 
 
@@ -50,17 +51,20 @@ function Body({dataType, selectedPeriod}) {
     <>
       <Header 
        activeEnergy={activeEnergy}
-       setActiveEnergy={setActiveEnergy} />
+       setActiveEnergy={setActiveEnergy}
+       currentElectricityPrice={currentElectricityPrice} />
       
       {dataType === CHART ? 
       <Chart
        activeEnergy={activeEnergy}
        electricityPrice={electricityPrice}
        gasPrice={gasPrice}
+       setCurrentElectricityPrice={setCurrentElectricityPrice}
         />
          : <DataTable 
          electricityPrice={electricityPrice}
          gasPrice={gasPrice}
+         setCurrentElectricityPrice={setCurrentElectricityPrice}
          /> }
         <ErrorModal errorMessage={errorMessage} handleClose={() => setErrorMessage(null)}/>
     </>

@@ -1,7 +1,7 @@
-function Price() {
+function Price(props) {
   return (
     <>
-      <h2>19.01</h2>
+      <h2>{props.currentElectricityPrice}</h2>
       <div>sents/kw</div>
     </>
   );

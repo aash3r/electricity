@@ -15,7 +15,8 @@ function App() {
   return (
     <Container>
       <Navigation />
-      <Body dataType={dataType}/>
+      <Body dataType={dataType}
+      selectedPeriod={selectedPeriod}/>
       <Footer 
        dataType={dataType}
        setDataType={setDataType}

@@ -58,7 +58,8 @@ function Body({dataType, selectedPeriod}) {
        electricityPrice={electricityPrice}
        gasPrice={gasPrice}
         />
-         : <DataTable electricityPrice={electricityPrice}
+         : <DataTable 
+         electricityPrice={electricityPrice}
          gasPrice={gasPrice}
          /> }
         <ErrorModal errorMessage={errorMessage} handleClose={() => setErrorMessage(null)}/>

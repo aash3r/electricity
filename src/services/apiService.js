@@ -18,14 +18,19 @@ export async function getElectricityPrice(selectedPeriod) {
 } 
  
  
-export async function getGasPrice(selectedPeriod) { 
-    const start = moment().subtract(selectedPeriod, 'month').toISOString(); 
-    const end = moment().toISOString(); 
- 
-    const params = new URLSearchParams({ 
-        start, 
-        end, 
-    }); 
-    const responce = await fetch(`${apiUrl}/gas-trade?${params}`); 
-    return await responce.json(); 
+export async function getGasPrice(selectedPeriod){
+    const start = moment().subtract(selectedPeriod,'month').toISOString();
+    const end = moment().toISOString();
+    const params = new URLSearchParams({
+        start,
+        end,
+    });
+
+    const response = await fetch(`${apiUrl}/gas-trade?${params}`);
+    return await response.json();
+}
+
+export async function getLastGasPrice(){
+    const response = await fetch(`${apiUrl}/gas-trade/EE/latest`);
+    return await response.json();
 }

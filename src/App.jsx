@@ -3,14 +3,16 @@ import { useState } from 'react';
 import  Container  from 'react-bootstrap/Container';
 import Navigation from './Navigation/Navigation';
 import Body from './Body';
-import './App.scss';
 import Footer from './Footer';
-import { CHART, PERIODS } from './constants'
+import './App.scss';
+import { PERIODS } from './constants';
+import { ELE } from './constants'
 
 
 function App() {
-  const [dataType, setDataType] = useState(CHART);
+  const [dataType, setDataType] = useState('chart');
   const [selectedPeriod, setSelectedPeriod] = useState(PERIODS[0].value);
+  const [activeEnergy, setActiveEnergy] = useState(ELE);
 
   return (
     <Container>

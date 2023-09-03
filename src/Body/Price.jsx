@@ -16,7 +16,7 @@ function Price({electricityPrice, activeEnergy, lastGasPrice}){
             },
             [GAS]:{
                 data:lastGasPrice[0],
-                format:'Sents/m³',
+                format:'€/m³',
             }
         }
         

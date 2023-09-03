@@ -56,12 +56,12 @@ function DataTable({electricityPrice,gasPrice,activeEnergy}) {
       <tbody>
        {chartData.map(({ee, lt, lv, fi,date},index) => (
         <tr className={ ee?.timestamp === NOW_TIMESTAMP ?  "activeline" :null}  key={index} >
-          <td>{index}</td>
-          <td>{moment.unix(date.timestamp).format('DD.MM.YYYY HH:mm:ss')}</td>
-          <td>{ee?.price}</td>
-          <td>{fi?.price}</td>
-          <td>{lt?.price}</td>
-          <td>{lv?.price}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{index}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{moment.unix(date.timestamp).format('DD.MM.YYYY HH:mm:ss')}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{ee?.price}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{fi?.price}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{lt?.price}</td>
+          <td className={ee?.timestamp === NOW_TIMESTAMP ? 'bg-info' : null}>{lv?.price}</td>
         </tr>
        ))}
       </tbody>

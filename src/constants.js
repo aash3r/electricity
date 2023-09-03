@@ -21,5 +21,5 @@ export const PERIODS = [
     { 
         label, 
         value: 2, 
-    } 
-];
+    },
+]

@@ -2,9 +2,12 @@ import moment from "moment";
  
 const apiUrl = 'https://dashboard.elering.ee/api'; 
  
-export async function getElectricityPrice(selectedPeriod) { 
-    const start = moment().subtract('10', 'hours').toISOString(); 
-    const end = moment().add(selectedPeriod, 'days').toISOString(); 
+export async function getElectricityPrice({to , selectedPeriod , from}) { 
+    const momentStart = selectedPeriod ? moment().subtract('10', 'hours') : moment (from);
+    const momentEnd = selectedPeriod ? moment().add (selectedPeriod): moment (to);
+
+    const start = momentStart.toISOString(); 
+    const end = momentEnd.toISOString(); 
  
     const params = new URLSearchParams({ 
         start, 
@@ -18,19 +21,28 @@ export async function getElectricityPrice(selectedPeriod) {
 } 
  
  
-export async function getGasPrice(selectedPeriod){
-    const start = moment().subtract(selectedPeriod,'month').toISOString();
-    const end = moment().toISOString();
+export async function getGasPrice(to ,selectedPeriod, from){
+    const momentStart = selectedPeriod ? moment().subtract(selectedPeriod, 'month') : moment(from);
+    const momentEnd = selectedPeriod ? moment() : moment(to);
+
+    const start = momentStart.toISOString();
+    const end = momentEnd.toISOString();
+    
     const params = new URLSearchParams({
         start,
         end,
     });
 
     const response = await fetch(`${apiUrl}/gas-trade?${params}`);
+
     return await response.json();
 }
 
-export async function getLastGasPrice(){
-    const response = await fetch(`${apiUrl}/gas-trade/EE/latest`);
+export async  function getCurrentGasPrice (){
+    const country = 'EE';
+
+    const response = await fetch(`${apiUrl}/gas-trade/${country}/latest`);
+
+
     return await response.json();
 }

@@ -72,6 +72,7 @@ function Body({
           activeEnergy={activeEnergy}
           electricityPrice={electricityPrice}
           gasPrice={gasPrice}
+          
         />
       ) : (
         <DataTable

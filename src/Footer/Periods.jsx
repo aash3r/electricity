@@ -18,6 +18,7 @@ function Periods({
           active={selectedPeriod === value}
           onClick={() => setSelectedPeriod(value)}
         >
+          {value}
           {label[activeEnergy]}
         </Button>
       ))}

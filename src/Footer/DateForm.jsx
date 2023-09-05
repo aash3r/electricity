@@ -2,12 +2,13 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ErrorModal from "../Body/ErrorModal";
-import { getElectricityPrice, getGasPrice, getCurrentGasPrice } from '../services/apiService'
+import { getElectricityPrice, getGasPrice, } from '../services/apiService'
 
 function DateForm({ 
     setElectricityPrice,
     setGasPrice,
-    setGasCurrentPrice 
+    setGasCurrentPrice ,
+    hideSideBar,
   }) {
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -19,30 +20,25 @@ function DateForm({
     const to = event.target.to.value;
 
     try {
+      const [dataEle , dataGas] = await Promise.all([
+        getElectricityPrice({to , from}),
+        getGasPrice({to, from}),
 
-      const dataEle = await getElectricityPrice({to , from});
-        if (!dataEle.success) {
-        throw dataEle.messages[0];
+      ]);
+
+      if(![dataEle, dataGas].find(data => data.success)) {
+        throw dataEle.messages[0]
       }
-      setElectricityPrice(dataEle.data);
-  
-      const dataGas = await getGasPrice({to, from});
-        if (!dataGas.success) {
-        throw dataGas.messages[0];
-      }
-      setGasPrice(dataGas.data);
-  
-      const dataCurrent = await getCurrentGasPrice();
-      if (!dataCurrent.success) {
-        throw dataCurrent.messages[0];
-      }
-      setGasCurrentPrice(dataCurrent.data[0].price);
+      setElectricityPrice(dataGas.data);
+      setGasPrice(dataGas.data)
     } catch(error) {
       setErrorMessage(error);
     }
 
 
     console.log(from, to);
+
+    hideSideBar();
   };
 
   return (
@@ -51,7 +47,7 @@ function DateForm({
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
         <Form.Label>From</Form.Label>
-        <Form.Control type="Date" name="from" />
+        <Form.Control type="date" name="from" />
       </Form.Group>
 
       <Form.Group className="mb-3">

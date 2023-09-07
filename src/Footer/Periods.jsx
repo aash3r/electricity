@@ -27,7 +27,7 @@ function Periods({
       <Button 
         className='mx-2' 
         variant='primary' 
-        onClick={() => dispatch(setShowSideBar(true))} 
+        onClick={() => setShowSideBar(true)} 
       > 
         Custom 
       </Button> 

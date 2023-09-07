@@ -26,8 +26,8 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setActiveEnergy, (state, action) => { 
         state.activeEnergy = action.payload; 
     }) 
-    // [setDataType]: (state,action) => { 
-    //     state.dataType = action.payload; 
+    .addCase(setDataType ,  (state,action) => { 
+        state.dataType = action.payload; })
  
     .addCase(setSelectedPeriod, (state, action) => { 
         state.selectedPeriod = action.payload; 

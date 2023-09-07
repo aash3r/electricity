@@ -5,8 +5,8 @@ import { setActiveEnergy } from "../services/stateService";
 import { useDispatch, useSelector } from "react-redux"; 
  
 function Switcher() { 
-const dispatch = useDispatch 
 const activeEnergy = useSelector((state) => state.activeEnergy); 
+const dispatch = useDispatch();
   return ( 
     <ButtonGroup> 
       <Button 

@@ -1,40 +1,36 @@
 import "./App.scss";
-import { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navigation from "./Navigation/Navigation";
 import Footer from "./Footer/index";
 import Body from "./Body/index";
-import { CHART, PERIODS, ELE } from "./constants";
+import Contact from "./Contact";
+import ErrorModal from "./ErrorModal";
+import { Route, Routes } from "react-router-dom";
+import useGetData from "./effects/useGetData";
 
 function App() {
-  const [activeEnergy, setActiveEnergy] = useState(ELE);
-  const [dataType, setDataType] = useState(CHART);
-  const [selectedPeriod, setSelectedPeriod] = useState(PERIODS[0].value);
-  const [gasPrice, setGasPrice] = useState(null);
-  const [gasCurrentPrice, setGasCurrentPrice] = useState(0);
+
+  useGetData();
+
+  const mainPage = (
+    <>
+      <Body />
+      <Footer />
+    </>
+  );
   return (
     <Container>
       <Navigation />
-      <Body
-        dataType={dataType}
-        selectedPeriod={selectedPeriod}
-        activeEnergy={activeEnergy}
-        setActiveEnergy={setActiveEnergy}
-        gasPrice={gasPrice}
-        setGasPrice={setGasPrice}
-        gasCurrentPrice={gasCurrentPrice}
-        setGasCurrentPrice={setGasCurrentPrice}
-      />
+      <Routes>
+      <Route path="/" element={mainPage} />
+        <Route path="/gas" element={mainPage} />
+        <Route path="/gas/:dataType" element={mainPage} />
+        <Route path="/ele" element={mainPage} />
+        <Route path="/ele/:dataType" element={mainPage} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
-      <Footer
-        dataType={dataType}
-        setDataType={setDataType}
-        selectedPeriod={selectedPeriod}
-        setSelectedPeriod={setSelectedPeriod}
-        activeEnergy={activeEnergy}
-        setGasPrice={setGasPrice}
-        setGasCurrentPrice={setGasCurrentPrice}
-      />
+      <ErrorModal />
     </Container>
   );
 }

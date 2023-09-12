@@ -7,7 +7,7 @@ export const CHART = 'chart';
 export const TABLE = 'table'; 
 export const LOW_ELE_PRICE = 120; 
 export const NOW_TIMESTAMP = moment().startOf('hour').unix(); 
- 
+export const mainUrl = '/electricity';
 const label = { 
     [ELE]: 'days', 
     [GAS]: 'months', 

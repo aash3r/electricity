@@ -4,9 +4,10 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./services/stateService";
 import { BrowserRouter } from "react-router-dom";
+import { mainUrl } from "./constants";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename={mainUrl}>
     <Provider store={store}>
       <App />
     </Provider>

@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { mainUrl} from '../constants'
 
 function Navigation() {
   return (
@@ -9,7 +10,7 @@ function Navigation() {
         <Link to='/' className='navbar-brand'>
           <img
             alt=''
-            src='/logo.svg'
+            src={`${mainUrl}/logo.svg`}
             width='30'
             height='30'
             className='d-inline-block align-top'

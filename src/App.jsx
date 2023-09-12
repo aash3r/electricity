@@ -9,6 +9,7 @@ import ErrorModal from './ErrorModal';
 import { Route, Routes } from 'react-router-dom';
 import useGetData from './effects/useGetData';
 
+
 function App() {
   useGetData();
 
